@@ -13,13 +13,20 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    public IActionResult Index( )
+    public IActionResult Index()
     {
         return View();
     }
 
     public IActionResult Privacy()
     {
+        return View();
+    }
+    [HttpPost]
+    public IActionResult Index(string fullname, string address)
+    {
+        string strOutput = " xin chao " + fullname + " den tu" + address;
+        ViewBag.Message = strOutput;
         return View();
     }
 
