@@ -10,14 +10,14 @@ using MvcMovie.Data;
 namespace MvcMovie.Migrations
 {
     [DbContext(typeof(ApplicationDbcontext))]
-    [Migration("20240509165931_Create_Table_Person")]
-    partial class Create_Table_Person
+    [Migration("20240510073817_Create_Database")]
+    partial class Create_Database
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.3");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
 
             modelBuilder.Entity("MvcMovie.Models.Person", b =>
                 {
@@ -25,14 +25,16 @@ namespace MvcMovie.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("address")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("fullname")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("PersonID");
 
-                    b.ToTable("Persons");
+                    b.ToTable("Person");
                 });
 #pragma warning restore 612, 618
         }

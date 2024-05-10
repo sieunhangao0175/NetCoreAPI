@@ -1,4 +1,4 @@
-//personcontroller
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MvcMovie.Data;
@@ -14,7 +14,6 @@ namespace MvcMovie.Controllers
         {
             _context = context;
         }
-    }
     public async Task<IActionResult> Index()
     {
         var model = await _context.Person.ToListAsync();
@@ -27,94 +26,95 @@ namespace MvcMovie.Controllers
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("PersonID,fullname,address")] Person person)
-{
-    if (ModelState.IsValid)
     {
-        _context.Add(person);
+        if (ModelState.IsValid)
+        {
+            _context.Add(person);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
+        }
+        return View(person);
+    }
+    public async Task<IActionResult> Edit(string id)
+    {
+        if (id == null || _context.Person == null)
+        {
+            return NotFound();
+        }
+        var person = await _context.Person.FindAsync(id);
+        if (person == null)
+        {
+            return NotFound();
+        }
+        return View(person);
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(string id, [Bind("personID,fullname,address")] Person person)
+    {
+        if (id == person.PersonID)
+        {
+            return NotFound();
+
+        }
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                _context.Update(person);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PersonExists(person.PersonID))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
+        }
+        return View(person);
+    }
+    public async Task<IActionResult> Delete(string id)
+    {
+        if (id == null || _context.Person == null)
+        {
+            return NotFound();
+
+        }
+        var person = await _context.Person
+        .FirstOrDefaultAsync(m => m.PersonID == id);
+        if (person == null)
+        {
+            return NotFound();
+        }
+        return View(person);
+    }
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteConfirmed(string id)
+    {
+        if (_context.Person == null)
+        {
+            return Problem("Entiny set 'ApplicationDbcontext.Person' is null");
+        }
+        var person = await _context.Person.FindAsync(id);
+        if (person == null)
+        {
+            _context.Person.Remove(person);
+        }
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
-
     }
-    return View(person);
-}
-public async Task<IActionResult> Edit(string id)
-{
-    if (id == null || sqlite3_context.Person == null)
+    private bool PersonExists(string id)
     {
-        return NotFound();
+        return (_context.Person.Any(e => e.PersonID == id));
     }
-    var person = await _context.Person.FindAsync(id);
-    if (person == null)
-    {
-        return NotFound();
-    }
-    return View(Person);
-}
-[HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> Edit(string id, [Bind("personID,fullname,address")] Person person)
-{
-    if (id == person.PersonID)
-    {
-        return NotFound();
-
-    }
-    if (ModelState.IsValid)
-    {
-        try
-        {
-            _context.Update(person);
-            await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!PersonExists(person.PersonID))
-            {
-                return NotFound();
-            }
-            else
-            {
-                throw;
-            }
-        }
-        return RedirectToAction(nameof(Index));
-    }
-    return View(person);
-}
-public async Task<IActionResult> Delete(string id)
-{
-    if (id == null || _context.Person == null)
-    {
-        return NotFound();
-
-    }
-    var person = await _context.Person
-    .FirstOrDefaultAsync(m => m.PersonID == id);
-    if (person == null)
-    {
-        return NotFound();
-    }
-    return View(person);
-}
-[HttpPost, ActionName("Delete")]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> DeleteConfirmed(string id)
-{
-    if (_context.Person == null)
-    {
-        return ProblemDetails("Entiny set 'ApplicationDbcontext.Person' is null");
-    }
-    var person = await _context.Person.FindAsync(id);
-    if (person == null)
-    {
-        _context.Person.Remove(person);
-    }
-    await _context.SaveChangesAsync();
-    return RedirectToAction(nameof(Index));
-}
-private bool PersonExists(string id)
-{
-    return (_context.Person.Any(e => e.PersonID == id)).GetValueOrDefault();
-}
 }
 
+}
