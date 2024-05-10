@@ -1,17 +1,19 @@
-using System;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.Net.Http.Headers;
 
-namespace MvcMovie.Models;
 
-public class Person
+
+namespace MvcMovie.Models
 {
-    public Person()
-    {
-    }
-
-    public string? PersonID {get; set;}
-    public string? fullname {get; set;}
-    public string? address {get; set;}
     
+    
+    public class Person
+    
+    {
+        [Key]
+        public string? PersonID {get; set;}
+        public string? fullname {get; set;}
+        public string? address {get; set;}
+    
+
+    }
 }
