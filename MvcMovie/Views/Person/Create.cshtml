@@ -2,39 +2,45 @@
 
 @{
     ViewData["Title"] = "Create";
-
 }
 <h1>Create</h1>
-
-<h4>Person</h4>
+<h2>Person</h2>
 <hr />
+    <form asp-action="Upload" enctype="multipart/form-data">
+        <div class="row">
+            <label class="col-sm-2">Import Data From Excel: </label>
+            <input type="file" name="file" class="col-sm-4">
+            <input type="submit" value="Upload" class="btn btn-primary col-sm-1">
+        </div>
+    </form>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="PersonID" class="control-label"></label>
-                <input asp-for="PersonID" class="form-control"/>
+                <input asp-for="PersonID" class="form-control" />
                 <span asp-validation-for="PersonID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="fullname" class="control-label"></label>
-                <input asp-for="fullname" class="form-control"/>
+                <input asp-for="fullname" class="form-control" />
                 <span asp-validation-for="fullname" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="address" class="control-label"></label>
-                <input asp-for="address" class="form-control"/>
+                <input asp-for="address" class="form-control" />
                 <span asp-validation-for="address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary"/>
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
+
 </div>
 <div>
-    <a asp-action="Index"> Back to list</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 @section Scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

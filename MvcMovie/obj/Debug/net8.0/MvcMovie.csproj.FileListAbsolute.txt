@@ -276,3 +276,7 @@ D:\Net_Core_API1\MvcMovie\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtim
 D:\Net_Core_API1\MvcMovie\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 D:\Net_Core_API1\MvcMovie\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 D:\Net_Core_API1\MvcMovie\obj\Debug\net8.0\MvcMovie.csproj.CopyComplete
+D:\Net_Core_API1\MvcMovie\bin\Debug\net8.0\EPPlus.dll
+D:\Net_Core_API1\MvcMovie\bin\Debug\net8.0\EPPlus.Interfaces.dll
+D:\Net_Core_API1\MvcMovie\bin\Debug\net8.0\EPPlus.System.Drawing.dll
+D:\Net_Core_API1\MvcMovie\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
