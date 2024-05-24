@@ -2,15 +2,11 @@
 
 @{
     ViewData["Title"] = "Edit";
-
 }
 
-<h1>
-    Edit
-</h1>
+<h1>Edit</h1>
 
-<h4>Person
-</h4>
+<h4>Person</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -19,19 +15,25 @@
             <input type="hidden" asp-for="PersonID" />
             <div class="form-group">
                 <label asp-for="fullname" class="control-label"></label>
-                <input asp-for="fullname" class="form-control"/>
+                <input asp-for="fullname" class="form-control" />
                 <span asp-validation-for="fullname" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="save" class="btn btn-primary" />
+                <label asp-for="address" class="control-label"></label>
+                <input asp-for="address" class="form-control" />
+                <span asp-validation-for="address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
-
     </div>
 </div>
+
 <div>
-    <a asp-action="Index">Back to list</a>
+    <a asp-action="Index">Back to List</a>
 </div>
-@section Scripts{
-    @{await Html.RenderPartialAsync("_ValidationScripPartial");}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

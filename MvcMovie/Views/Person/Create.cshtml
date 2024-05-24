@@ -3,16 +3,14 @@
 @{
     ViewData["Title"] = "Create";
 }
+
 <h1>Create</h1>
-<h2>Person</h2>
+<form asp-action="Upload" enctype="multipart/form-data">
+<input type="file" name="file">
+<input type="submit" class="btn btn-success" value="Upload">
+</form>
+<h4>Person</h4>
 <hr />
-    <form asp-action="Upload" enctype="multipart/form-data">
-        <div class="row">
-            <label class="col-sm-2">Import Data From Excel: </label>
-            <input type="file" name="file" class="col-sm-4">
-            <input type="submit" value="Upload" class="btn btn-primary col-sm-1">
-        </div>
-    </form>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -37,11 +35,12 @@
             </div>
         </form>
     </div>
-
 </div>
+
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-@section Scripts{
+
+@section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
