@@ -22,14 +22,39 @@ namespace MvcMovie.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index(int? page)
+        public async Task<IActionResult> Index(int? page, int? PageSize)
         {
-            var model = _context.Person.ToList().ToPagedList(page ?? 1,5);
+            ViewBag.PageSize = new List<SelectListItem>()
+            {
+                 new SelectListItem() { Value="3", Text="3"},
+                new SelectListItem() { Value="5", Text="5"},
+                new SelectListItem() { Value="10", Text="10"},
+                new SelectListItem() { Value="15", Text="15"},
+                new SelectListItem() { Value="25", Text="25"},
+                new SelectListItem() { Value="50", Text="50"},
+            };
+            int Pagesize = (PageSize ?? 3);
+            ViewBag.psize = PageSize;
+            var model = _context.Person.ToList().ToPagedList(page ?? 1, Pagesize);
             return View(model);
-        }
+        }   
+        //  public async Task<ActionResult> Index(int? page, int? PageSize)
+        // {
+        //     ViewBag.PageSize =new List<SelectListItem>()
+        //     {
+        //         new SelectListItem() { Value="3", Text="3"},
+        //         new SelectListItem() { Value="5", Text="5"},
+        //         new SelectListItem() { Value="10", Text="10"},
+        //         new SelectListItem() { Value="15", Text="15"},
+        //         new SelectListItem() { Value="25", Text="25"},
+        //         new SelectListItem() { Value="50", Text="50"},
+        //     };
+        //     int Pagesize = (PageSize ?? 3);
+        //     ViewBag.psize = PageSize;
+        //     var model = _context.Person.ToList().ToPagedList(page ?? 1, Pagesize);
+        //     return View(model);
 
         
-
         // GET: Person/Details/5
         public async Task<IActionResult> Details(string id)
         {
@@ -139,23 +164,7 @@ namespace MvcMovie.Controllers
         // POST: Person/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Index(int? page, int? PageSize)
-        {
-            ViewBag.PageSize =new List<SelectListItem>()
-            {
-                new SelectListItem() { Value="3", Text="3"},
-                new SelectListItem() { Value="5", Text="5"},
-                new SelectListItem() { Value="10", Text="10"},
-                new SelectListItem() { Value="15", Text="15"},
-                new SelectListItem() { Value="25", Text="25"},
-                new SelectListItem() { Value="50", Text="50"},
-            };
-            int Pagesize = (PageSize ?? 3);
-            ViewBag.psize = PageSize;
-            var model = _context.Person.ToList().ToPagedList(page ?? 1, Pagesize);
-            return View(model);
-
-        }
+       
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var person = await _context.Person.FindAsync(id);

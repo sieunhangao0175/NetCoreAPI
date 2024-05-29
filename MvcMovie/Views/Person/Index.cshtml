@@ -41,7 +41,9 @@
 }
     </tbody>
 </table>
-@Html.PagedListPager((IPagedList) Model, page => Url.Action("Index", new {page = page}), new X.PagedList.Mvc.Core.PagedListRenderOptions { LiElementClasses = new string[] {"page-item"}, PageClasses = new string[] { "page-link" }})
+@* @Html.PagedListPager((IPagedList) Model, page => Url.Action("Index", new {page = page}),
+ new X.PagedList.Mvc.Core.PagedListRenderOptions { LiElementClasses = new string[] {"page-item"},
+  PageClasses = new string[] { "page-link" }}) *@
 @using (Html.BeginForm("Index", "Person", FormMethod.Get, new {id ="form1"}))
 {
     <div class="row">
@@ -52,7 +54,7 @@
             PageClasses = new string[] {"Page-link" }})
         </div>
         <div class="col-md-1">
-            @Html.DropDownList("pagesize",null,new {@class="form-select"})
+            @Html.DropDownList("pageSize",null,new {@class="form-select"})
         </div>
     </div>
 }
