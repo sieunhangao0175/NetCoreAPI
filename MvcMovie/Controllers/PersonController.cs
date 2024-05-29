@@ -9,6 +9,7 @@ using MvcMovie.Data;
 using MvcMovie.Models;
 using MvcMovie.Models.ExcelProcess;
 using OfficeOpenXml;
+using X.PagedList;
 
 namespace MvcMovie.Controllers
 {
@@ -21,12 +22,13 @@ namespace MvcMovie.Controllers
         {
             _context = context;
         }
-
-        // GET: Person
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            return View(await _context.Person.ToListAsync());
+            var model = _context.Person.ToList().ToPagedList(page ?? 1,5);
+            return View(model);
         }
+
+        
 
         // GET: Person/Details/5
         public async Task<IActionResult> Details(string id)
@@ -84,10 +86,7 @@ namespace MvcMovie.Controllers
             return View(person);
         }
 
-        // POST: Person/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("PersonID,fullname,address")] Person person)
         {
@@ -140,6 +139,23 @@ namespace MvcMovie.Controllers
         // POST: Person/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Index(int? page, int? PageSize)
+        {
+            ViewBag.PageSize =new List<SelectListItem>()
+            {
+                new SelectListItem() { Value="3", Text="3"},
+                new SelectListItem() { Value="5", Text="5"},
+                new SelectListItem() { Value="10", Text="10"},
+                new SelectListItem() { Value="15", Text="15"},
+                new SelectListItem() { Value="25", Text="25"},
+                new SelectListItem() { Value="50", Text="50"},
+            };
+            int Pagesize = (PageSize ?? 3);
+            ViewBag.psize = PageSize;
+            var model = _context.Person.ToList().ToPagedList(page ?? 1, Pagesize);
+            return View(model);
+
+        }
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var person = await _context.Person.FindAsync(id);

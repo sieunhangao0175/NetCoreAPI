@@ -280,3 +280,6 @@ D:\Net_Core_API1\MvcMovie\bin\Debug\net8.0\EPPlus.dll
 D:\Net_Core_API1\MvcMovie\bin\Debug\net8.0\EPPlus.Interfaces.dll
 D:\Net_Core_API1\MvcMovie\bin\Debug\net8.0\EPPlus.System.Drawing.dll
 D:\Net_Core_API1\MvcMovie\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
+D:\Net_Core_API1\MvcMovie\bin\Debug\net8.0\X.PagedList.dll
+D:\Net_Core_API1\MvcMovie\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
+D:\Net_Core_API1\MvcMovie\obj\Debug\net8.0\MvcMovie.MvcApplicationPartsAssemblyInfo.cs
