@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LVC_BaiThi2324")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+82f6da0c750b635d5c044256ec0455b325e1f51a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56a7455d1950186fc1e2d371365dca6139fe519b")]
 [assembly: System.Reflection.AssemblyProductAttribute("LVC_BaiThi2324")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LVC_BaiThi2324")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
