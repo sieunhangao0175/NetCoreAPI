@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\LVC_BaiThi2324.props" />
-</Project>
