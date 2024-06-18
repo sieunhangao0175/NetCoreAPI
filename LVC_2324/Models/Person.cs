@@ -9,7 +9,7 @@ namespace LVC_2324.Models
         [Key]
         public int Id { get; set; }
         public char Name { get; set; }
-        public string adress { get; set; }
+        public string? adress { get; set; }
     }
     
 }
