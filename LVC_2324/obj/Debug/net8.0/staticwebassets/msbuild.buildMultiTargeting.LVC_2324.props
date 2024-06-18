@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\LVC_2324.props" />
+</Project>

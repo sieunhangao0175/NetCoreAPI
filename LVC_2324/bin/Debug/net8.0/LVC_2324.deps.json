@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "LVC_2324/1.0.0": {
+        "runtime": {
+          "LVC_2324.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LVC_2324/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
