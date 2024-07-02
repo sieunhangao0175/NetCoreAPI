@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LVCBaiThiLai")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+74e7f770eb879e5f980572700d4d9e50aac2feb4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14b8cc1fbdc91bae27cfcfd592d49f5d2c7db0ef")]
 [assembly: System.Reflection.AssemblyProductAttribute("LVCBaiThiLai")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LVCBaiThiLai")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
